@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import pytesseract
-pytesseract.pytesseract.tesseract_cmd = r'C:\Users\soyuz\AppData\Local\Tesseract-OCR\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 
 def get_grayscale(image):
@@ -52,9 +52,8 @@ def deskew(image):
 def match_template(image, template):
     return cv2.matchTemplate(image, template, cv2.TM_CCOEFF_NORMED)
 
-
-image = cv2.imread('id.jpg')
-gray = get_grayscale(image)
-thres = thresholding(gray)
-
-print(pytesseract.image_to_string(thres, lang='kir+eng+rus'))
+if __name__ == '__main__':
+    image = cv2.imread('id.jpg')
+    gray = get_grayscale(image)
+    thres = thresholding(gray)
+    print(pytesseract.image_to_string(thres, lang='kir+eng+rus'))

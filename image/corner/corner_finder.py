@@ -7,10 +7,11 @@ Created on Wed Apr 22 17:34:39 2020
 
 import numpy as np
 from PIL import Image
+from matplotlib import pyplot as plt
 
 
-def pixels(image, a=1, b=1):
-    img = np.asarray(image)
+def pixels(image_file, a=1, b=1):
+    img = np.asarray(image_file)
     width, height = img.shape
     R = np.zeros((width, height), np.float)+1
     W = [[-2, -2], [-1, -2], [0, -2], [1, -2], [2, -2],
@@ -37,8 +38,10 @@ def pixels(image, a=1, b=1):
 
 
 if __name__ == '__main__':
-    cwd = 'C:\\Users\\soyuz\\Desktop\\'
-    image = Image.open(cwd + 'corner.png').convert('L')
-    result = pixels(image, 1, 0)
+    cwd = 'C:\\Users\\stat01\\Desktop\\'
+    image = Image.open(cwd + 'sign.png').convert('L')
+    result = pixels(image, 1, 1)
 
     new_image = Image.fromarray(result)
+    plt.imshow(result)
+    plt.show()
